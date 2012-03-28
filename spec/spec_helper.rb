@@ -4,6 +4,10 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require "capybara/rspec"
+#require 'minitest/autorun'
+# require 'webmock/minitest'
+# require 'vcr'
+#require 'turn'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -31,3 +35,18 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 end
+
+# Turn.config do |c|
+#  # :outline  - turn's original case/test outline mode [default]
+#  c.format  = :outline
+#  # turn on invoke/execute tracing, enable full backtrace
+#  c.trace   = true
+#  # use humanized test names (works only with :outline format)
+#  c.natural = true
+# end
+ 
+# #VCR config
+# VCR.config do |c|
+#   c.cassette_library_dir = 'spec/fixtures/wolframalpha_cassettes'
+#   c.stub_with :webmock
+# end

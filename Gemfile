@@ -6,14 +6,23 @@ gem 'rails', '3.2.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
+gem 'httparty'
+gem 'awesome_print'
+gem 'newrelic_rpm'
+gem 'haml-rails'
+gem 'html5-rails'
+gem 'simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  gem 'compass-rails'
+  gem 'compass_twitter_bootstrap'
+  gem 'compass-susy-plugin', :require => 'susy'
+  gem 'compass-h5bp'
+  
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer'
 
@@ -25,6 +34,7 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'mongrel', '1.2.0.pre2'
 end
 
 group :test do
@@ -32,6 +42,9 @@ group :test do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'launchy'
+  # gem 'webmock'
+  # gem 'vcr'
+  # gem 'turn'
 end
 
 # To use ActiveModel has_secure_password
