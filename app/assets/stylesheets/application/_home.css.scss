@@ -1,11 +1,31 @@
 #stream {
   @include full;
-  @include pad(1,1);
+  @include suffix(1);
   background: #fff;
+  list-style: none;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  min-height: 300px;
   @include border-radius(10px);
   .stream-item {
     border: 1px solid #999;
-    margin-bottom: 1.5em;
+    margin-bottom: .5em;
     @include full(10);
   }
+}
+
+#speech-form {
+  @include full;
+  @include pad(5,5);
+}
+
+#speech-button{
+  font-size: 250%;
+  border: none;
+  outline: none;
+  width: 43px;
+  cursor: pointer;
+  @include border-radius(10px);
+  text-indent: -9999px;
+  color: #fff;
 }
