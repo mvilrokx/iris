@@ -8,7 +8,6 @@ gem 'rails', '3.2.2'
 gem 'mysql2'
 gem 'httparty'
 gem 'awesome_print'
-gem 'newrelic_rpm'
 gem 'haml-rails'
 gem 'html5-rails'
 gem 'simple_form'
@@ -16,8 +15,8 @@ gem 'simple_form'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'compass-rails'
   gem 'compass_twitter_bootstrap'
   gem 'compass-susy-plugin', :require => 'susy'

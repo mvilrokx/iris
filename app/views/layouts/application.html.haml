@@ -8,8 +8,9 @@
     = render "header"
 
     #main{ :role => "main" }
-      = render "flashes"
-      = yield
+      #page
+        = render "flashes"
+        = yield
 
     = render "footer"
 

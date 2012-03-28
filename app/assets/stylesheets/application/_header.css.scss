@@ -1,8 +1,7 @@
 #header {
   background: #222;
-  color: white;
   opacity: 0.95;
-  position: fixed;
-  @include container;
-  // @include susy-grid-background;
+  color: white;
+  // @include container;
+//  @include susy-grid-background;
 }

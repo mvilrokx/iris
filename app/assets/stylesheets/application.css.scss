@@ -10,7 +10,7 @@
 //-----------------------------------------
 // Imports
 //-----------------------------------------
-// @import "compass/css3"
+@import "compass/css3";
 @import "susy";
 @import "h5bp";
 
@@ -26,6 +26,9 @@
 @import "application/document";
 @import "application/header";
 @import "application/footer";
+
+@import "application/home";
+
 @import "application/media_queries"; // Media queries last
 
 //-----------------------------------------
