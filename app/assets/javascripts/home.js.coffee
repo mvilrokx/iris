@@ -23,13 +23,20 @@ speechChange = (e) ->
     topResult = e.originalEvent.results[0]
     # doThis = interpret(topResult);
     # for now, just echo the received text
-    previous_item = $('[class^=stream-item]')
-    $('<li class="stream-item">' + topResult.utterance + '</li>').hide().appendTo('#stream').show('fast', ->
-      previous_item.delay(1500).slideUp('fast', -> previous_item.remove()))
-    # submit the form
+    adjustStream(topResult.utterance)
+    # submit the form to the proxy service
     $.get(
       $('#process_speech').attr('action'), 
-      $('#process_speech').serialize(), 
-      (data, textStatus, jqXHR) -> alert(data), 
+      $('#process_speech').serialize(),
+#      (data, textStatus, jqXHR) -> adjustStream(data.queryresult.pod[1].subpod.plaintext),
+      (data, textStatus, jqXHR) -> adjustStream(img(data.queryresult.pod[1].subpod.img)),
       "json"
     )
+
+adjustStream = (item) ->
+  previous_items = $('[class^=stream-item]')
+  $("<li class='stream-item'>#{item}</li>").hide().appendTo('#stream').show('fast', ->
+    previous_items.delay(1500).slideUp('fast', -> previous_items.remove()))
+
+img = (img) ->
+  img_tag = "<img src=#{img.src} title=#{img.title} alt=#{img.alt} height=#{img.height} width=#{img.width} />"

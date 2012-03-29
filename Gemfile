@@ -11,6 +11,8 @@ gem 'awesome_print'
 gem 'haml-rails'
 gem 'html5-rails'
 gem 'simple_form'
+gem 'faraday'
+gem 'faraday_middleware'
 
 # Gems used only for assets and not required
 # in production environments by default.
