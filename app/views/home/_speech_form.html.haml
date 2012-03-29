@@ -1,2 +1,2 @@
-%form
-  %input#speech-button{:type => "text", "x-webkit-speech" => ""}
+=form_tag("/home/process_speech", :method => :get, :id=>"process_speech") do
+  %input#speech-button{:name => "utterance", :type => "text", "x-webkit-speech" => ""}

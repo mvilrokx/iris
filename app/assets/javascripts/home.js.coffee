@@ -7,7 +7,7 @@ $ ->
 
 browserSupportsSpeechInput = -> 
   if document.createElement('input').webkitSpeech==undefined
-    alert "Sorry! Your browser does not support the Speech Input"
+    alert "Sorry! Your browser does not support Speech Input"
     false
   else
     true
@@ -24,5 +24,12 @@ speechChange = (e) ->
     # doThis = interpret(topResult);
     # for now, just echo the received text
     previous_item = $('[class^=stream-item]')
-    $('<li class="stream-item">' + topResult.utterance + '</li>').hide().appendTo('#stream').show ->
-      previous_item.delay(1000).slideUp('fast', -> $previous_item.remove())
+    $('<li class="stream-item">' + topResult.utterance + '</li>').hide().appendTo('#stream').show('fast', ->
+      previous_item.delay(1500).slideUp('fast', -> previous_item.remove()))
+    # submit the form
+    $.get(
+      $('#process_speech').attr('action'), 
+      $('#process_speech').serialize(), 
+      (data, textStatus, jqXHR) -> alert(data), 
+      "json"
+    )
