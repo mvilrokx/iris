@@ -41,7 +41,7 @@ speechChange = (e) ->
 adjustStream = (item) ->
   previous_items = $('[class^=stream-item]')
   $("<li class='stream-item'>#{item}</li>").hide().appendTo('#stream').show('fast', ->
-    previous_items.delay(1500).slideUp('fast', -> previous_items.remove()))
+    previous_items.delay(2500).slideUp('fast', -> previous_items.remove()))
 
 img = (img) ->
   img_tag = "<img src=#{img.src} title=#{img.title} alt=#{img.alt} height=#{img.height} width=#{img.width} />"
