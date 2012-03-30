@@ -1,7 +1,13 @@
 #header {
-  background: #222;
+  background: #111;
   opacity: 0.95;
   color: white;
-  // @include container;
+  font-size: 45px;
+  @include container;
+  @include box-shadow(#333 0px 0px 10px 5px);
 //  @include susy-grid-background;
+  #title {
+    @include full;
+    @include prefix(1);
+  }
 }

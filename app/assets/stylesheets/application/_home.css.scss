@@ -8,7 +8,7 @@
   min-height: 300px;
   @include border-radius(10px);
   .stream-item {
-    border: 1px solid #999;
+    // border: 1px solid #999;
     margin-bottom: .5em;
     @include full(10);
   }

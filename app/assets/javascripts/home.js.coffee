@@ -14,22 +14,27 @@ browserSupportsSpeechInput = ->
 
 # Function called when a speech recognition result is received.
 speechChange = (e) ->
-  # Proposed Flow
-  # 1. pass received text to service that can interpret the text
-  # 2. when this service returns, do what it says to do (call another service)
-  # 3. when this service returns, show results of this service in the stream
+  # Flow
+  # 1. pass received text to service that can interpret the text (using WolframAlpha right now)
+  # 2. when this service returns, show results of this service in the stream
   e.preventDefault()
   if e.type == 'webkitspeechchange' && e.originalEvent.results
     topResult = e.originalEvent.results[0]
-    # doThis = interpret(topResult);
-    # for now, just echo the received text
     adjustStream(topResult.utterance)
     # submit the form to the proxy service
     $.get(
       $('#process_speech').attr('action'), 
       $('#process_speech').serialize(),
 #      (data, textStatus, jqXHR) -> adjustStream(data.queryresult.pod[1].subpod.plaintext),
-      (data, textStatus, jqXHR) -> adjustStream(img(data.queryresult.pod[1].subpod.img)),
+      (data, textStatus, jqXHR) -> 
+        if data.queryresult.success == 'true'
+          if data.queryresult.pod[1].subpod instanceof Array
+            adjustStream(img(data.queryresult.pod[1].subpod[0].img))
+          else
+            adjustStream(img(data.queryresult.pod[1].subpod.img))
+        else
+          adjustStream("I'm sorry, I didn't understand, please try again")
+
       "json"
     )
 

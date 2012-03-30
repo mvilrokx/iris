@@ -140,29 +140,27 @@ EOF
   end
 
   def process_speech
-    # conn = Faraday.new(:url => 'http://api.wolframalpha.com') do |builder|
-    #   builder.request  :url_encoded 
-    #   builder.response :logger
-    #   builder.adapter  :net_http
-    # end
+    conn = Faraday.new(:url => 'http://api.wolframalpha.com', :proxy => "http://www-proxy.us.oracle.com:80/") do |builder|
+      builder.request  :url_encoded 
+      builder.response :logger
+      builder.adapter  :net_http
+    end
 
-    # resp = conn.get do |req|
-    #   req.url '/v2/query'
-    #   req.options = {
-    #     :proxy => {
-    #       :uri => "http://www-proxy.us.oracle.com:80/",  # proxy server URI
-    #     }
-    #   }
-    #   req.params['input'] = params[:utterance]
-    #   req.params['appid'] = 'R5569T-AV7RJTE4A2'
-    # end
-    # respond_with(["Server received: #{params[:utterance]}"])
-    # respond_with(resp.body)
-    # puts @@test_data
-    respond_with(MultiXml.parse(@@test_data))
+    resp = conn.get do |req|
+      req.url '/v2/query'
+      # req.options = {
+      #   :proxy => {
+      #     :uri => "http://www-proxy.us.oracle.com:80/",  # proxy server URI
+      #   }
+      # }
+      req.params['input'] = params[:utterance]
+      req.params['appid'] = 'R5569T-AV7RJTE4A2'
+    end
+    #respond_with(["Server received: #{params[:utterance]}"])
+    puts resp.body
+    respond_with(MultiXml.parse(resp.body))
+    #puts @@test_data
+    #respond_with(MultiXml.parse(@@test_data))
   end
 
 end
-
-
-  

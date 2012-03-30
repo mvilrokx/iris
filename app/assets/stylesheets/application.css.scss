@@ -11,6 +11,7 @@
 // Imports
 //-----------------------------------------
 @import "compass/css3";
+@include font-face("Sansation", font-files("Sansation_Regular.ttf"));
 @import "susy";
 @import "h5bp";
 
